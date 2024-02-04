@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Promptopia - Prompt Sharing Web Application
+
+## Overview
+
+Welcome to Promptopia, a creative writing platform designed for sharing and exploring various writing prompts. This web application comes equipped with user authentication and CRUD (Create, Read, Edit, Delete) features, providing a secure and interactive environment for writers.
+
+## Technologies Used
+
+- **bcrypt**: Library for secure password hashing.
+- **mongodb**: NoSQL database for efficient data management.
+- **mongoose**: MongoDB object modeling for Node.js.
+- **next**: React-based framework for server-rendered applications.
+- **next-auth**: Authentication library for Next.js applications.
+- **react**: JavaScript library for building user interfaces.
+- **react-dom**: Provides DOM-specific methods for React.
+
+### Development Dependencies
+
+- **autoprefixer**: PostCSS plugin for automatic vendor prefixing.
+- **postcss**: Tool for transforming styles with JS plugins.
+- **tailwindcss**: Highly customizable CSS framework.
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository:**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+    ```bash
+    git clone https://github.com/your-username/Promptopia.git
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. **Install dependencies:**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+    ```bash
+    cd Promptopia
+    npm install
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+3. **Set up environment variables:**
 
-## Learn More
+    Create a `.env` file in the root directory with the following:
 
-To learn more about Next.js, take a look at the following resources:
+    ```env
+    MONGODB_URI=your_mongodb_connection_string
+    NEXTAUTH_URL=http://localhost:3000
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. **Run the application:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    ```bash
+    npm run dev
+    ```
 
-## Deploy on Vercel
+    Access the application at `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Features
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **User Authentication:** Secure registration and login with bcrypt password hashing.
+- **Prompt CRUD Operations:** Create, Read, Update, and Delete prompts for an interactive platform.
+- **Next.js Framework:** Efficient server-rendered applications.
+- **Tailwind CSS:** Customizable framework for a modern user interface.

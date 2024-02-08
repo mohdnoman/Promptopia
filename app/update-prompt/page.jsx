@@ -8,31 +8,40 @@ import Form from "@components/Form";
 
 const UpdatePrompt = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const promptId = searchParams.get("id");
-
   const [post, setPost] = useState({ prompt: "", tag: "" });
   const [submitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const getPromptDetails = async () => {
-      const response = await fetch(`/api/prompt/${promptId}`);
-      const data = await response.json();
+      try {
+        const searchParams = useSearchParams(); // Move useSearchParams outside useEffect
+        const promptId = searchParams.get("id");
 
-      setPost({
-        prompt: data.prompt,
-        tag: data.tag,
-      });
+        if (!promptId) {
+          throw new Error("Missing PromptId!");
+        }
+
+        const response = await fetch(`/api/prompt/${promptId}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch prompt details");
+        }
+
+        const data = await response.json();
+        setPost({
+          prompt: data.prompt,
+          tag: data.tag,
+        });
+      } catch (error) {
+        console.error(error);
+      }
     };
 
-    if (promptId) getPromptDetails();
-  }, [promptId]);
+    getPromptDetails();
+  }, []);
 
   const updatePrompt = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    if (!promptId) return alert("Missing PromptId!");
 
     try {
       const response = await fetch(`/api/prompt/${promptId}`, {
@@ -45,9 +54,11 @@ const UpdatePrompt = () => {
 
       if (response.ok) {
         router.push("/");
+      } else {
+        throw new Error("Failed to update prompt");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setIsSubmitting(false);
     }
